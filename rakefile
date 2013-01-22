@@ -1,0 +1,29 @@
+require 'rubygems'
+require 'rubygems/package_task'
+require 'rake/testtask'
+
+spec = Gem::Specification.new do |s|
+  s.name         = 'jenkinsgrowler'
+  s.version      = '0.0.1'
+  s.date         = '2013-01-22'
+  s.summary      = "Growl notifier for jenkins jobs"
+  s.description  = "Jenkinsgrowler is a notifier for jenkins jobs"
+  s.authors      = ["Srivatsa Katta"]
+  s.email        = 'vatsa.katta@gmail.com'
+  s.files        = ["lib/jenkinsgrowler.rb"]
+  s.executables  = 'jenkinsgrowler'
+  s.homepage     = 'http://github.com/katta/jenkinsgrowler'
+  s.add_development_dependency('mocha','>=0.12.3')
+end
+
+Gem::PackageTask.new(spec) do |pkg|
+  nil
+end
+
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList["test/**/test*.rb"]
+  t.options = "-v"
+end
+
+task :default => [:test, :repackage]
