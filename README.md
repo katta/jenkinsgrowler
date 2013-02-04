@@ -34,6 +34,7 @@ Usage: jenkinsgrowler [options]
     -i, --interval INTEVAL           Polling interval in seconds. Default (60 seconds)
     -u, --user USERNAME              Username for basic authentication
     -p, --password PASSWORD          Password for basic authentication
+    -t, --timezone TIMEZONE          Servers timeone. Default (+0530)
     -h, --help                       Displays help message
 ```
 

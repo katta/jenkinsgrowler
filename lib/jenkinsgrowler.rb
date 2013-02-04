@@ -12,6 +12,7 @@ $jobs = options[:jobs]
 $interval = options[:poll_interval]
 $username = options[:username]
 $password = options[:password]
+$timezone = options[:timezone]
  
 $jobRuns = Hash.new
  
@@ -29,7 +30,7 @@ end
  
  
 def changed_recently(buildTime, job)
-  buildRunTime = DateTime.strptime("#{buildTime}+0530", '%Y-%m-%d_%H-%M-%S%z')
+  buildRunTime = DateTime.strptime("#{buildTime}#{$timezone}", '%Y-%m-%d_%H-%M-%S%z')
   
   if $jobRuns[job] == nil then
     $jobRuns[job] = buildRunTime

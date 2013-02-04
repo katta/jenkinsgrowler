@@ -15,6 +15,7 @@ module JenkinsGrowler
         options[:poll_interval] = 60
         options[:username] = nil
         options[:password] = nil
+        options[:timezone] = "+0530"
 
 
         opts.on("-s","--server SERVER_URL","URL of the jenkins server") do |url|
@@ -39,6 +40,10 @@ module JenkinsGrowler
 
         opts.on("-p","--password PASSWORD","Password for basic authentication") do |password|
           options[:password] = password
+        end
+
+        opts.on("-t","--timezone TIMEZONE", "Server's timezone. Default (+0530)") do |timezone|
+          options[:timezone] = timezone
         end
 
         opts.on( "-h", "--help", "Displays help message" ) do
