@@ -13,6 +13,9 @@ module JenkinsGrowler
         options[:server_url] = nil
         options[:jobs] = []
         options[:poll_interval] = 60
+        options[:username] = nil
+        options[:password] = nil
+
 
         opts.on("-s","--server SERVER_URL","URL of the jenkins server") do |url|
           options[:server_url] = url
@@ -28,6 +31,14 @@ module JenkinsGrowler
 
         opts.on("-i","--interval INTEVAL","Polling interval in seconds") do |interval|
           options[:poll_interval] = interval.to_i
+        end
+
+        opts.on("-u","--user USERNAME","Username for basic authentication") do |username|
+          options[:username] = username
+        end
+
+        opts.on("-p","--password PASSWORD","Password for basic authentication") do |password|
+          options[:password] = password
         end
 
         opts.on( "-h", "--help", "Displays help message" ) do

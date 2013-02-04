@@ -10,15 +10,20 @@ options = JenkinsGrowler::ArgumentsParser.new.parse(ARGV)
 $ciBaseUrl = options[:server_url]
 $jobs = options[:jobs]
 $interval = options[:poll_interval]
+$username = options[:username]
+$password = options[:password]
  
 $jobRuns = Hash.new
  
 def last_build_output(job)
-  url = URI.parse("#$ciBaseUrl")
-  res = Net::HTTP.start(url.host, url.port) { |http|
-    http.get("/job/#{job}/lastBuild/api/json")
-  }
- 
+  uri = URI.parse("#{$ciBaseUrl}/job/#{job}/lastBuild/api/json")
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Get.new(uri.request_uri)
+  if ($username !=nil && $password != nil) then
+    request.basic_auth($username, $password)
+  end
+
+  res = http.request(request)
   JSON.parse res.body
 end
  
