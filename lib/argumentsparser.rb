@@ -46,7 +46,7 @@ module JenkinsGrowler
           options[:timezone] = timezone
         end
 
-        opts.on( "-h", "--help", "Displays help message" ) do
+        opts.on( "-h", "--help", "Displays help message" ) do          
           puts opts
           exit
         end
@@ -55,6 +55,7 @@ module JenkinsGrowler
       optparse.parse!(args)
 
       if(options[:server_url] == nil || options[:jobs].length == 0)
+        puts 'Error: Make sure [server_url] and at least one [job] is specified'
         puts optparse
         exit(-1)
       end

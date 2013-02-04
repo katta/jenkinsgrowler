@@ -25,6 +25,12 @@ def last_build_output(job)
   end
 
   res = http.request(request)
+  if(res.is_a? Net::HTTPClientError) then
+    puts "Error: Not able to read the job status, failed with error [#{res.message}]"
+    puts"   Make sure the basic authorization credentials are provided, if the site is protected or the job names given are right."
+    exit
+  end
+
   JSON.parse res.body
 end
  
