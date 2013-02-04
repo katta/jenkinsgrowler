@@ -38,7 +38,6 @@ module JenkinsGrowler
 
       optparse.parse!(args)
 
-      puts(options[:jobs].length)
       if(options[:server_url] == nil || options[:jobs].length == 0)
         puts optparse
         exit(-1)

@@ -1,14 +1,15 @@
-#!/usr/bin/ruby
- 
 require 'rubygems'
 require 'json'
 require 'net/http'
 require 'uri'
 require 'date'
- 
-$ciBaseUrl = 'http://ci.motechproject.org' #URL of your jenkins CI
-$jobs = ['Ananya-Kilkari','Ananya-Reports','Ananya-Kilkari-Smoke'] # add all the jobs to be monitored in this list
-$interval = 60  # time in seconds - this script checks for build activity in the mentioned interval
+require 'argumentsparser'
+
+options = JenkinsGrowler::ArgumentsParser.new.parse(ARGV)
+
+$ciBaseUrl = options[:server_url]
+$jobs = options[:jobs]
+$interval = options[:poll_interval]
  
 $jobRuns = Hash.new
  
@@ -24,8 +25,7 @@ end
  
 def changed_recently(buildTime, job)
   buildRunTime = DateTime.strptime("#{buildTime}+0530", '%Y-%m-%d_%H-%M-%S%z')
- 
- 
+  
   if $jobRuns[job] == nil then
     $jobRuns[job] = buildRunTime
     return false
@@ -40,8 +40,8 @@ end
  
  
 def build_status(job)
- 
   buildOutput = last_build_output job
+  puts(buildOutput)
   building = buildOutput['building']
   buildTime = buildOutput['id']
   duration = buildOutput['duration']
@@ -49,7 +49,6 @@ def build_status(job)
   if building or !changed_recently(buildTime, job) then
     return
   end
- 
  
   result = buildOutput['result']
   description = buildOutput['fullDisplayName']
@@ -60,7 +59,7 @@ def build_status(job)
     comments += item['comment']
   end
  
-  %x[ /usr/local/bin/growlnotify -t "#{result}" -m "#{description}\n#{comments}" ]
+  %x[ growlnotify -t "#{result}" -m "#{description}\n#{comments}" ]
 end
  
 while true do
