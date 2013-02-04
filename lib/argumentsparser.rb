@@ -15,26 +15,31 @@ module JenkinsGrowler
         options[:poll_interval] = 60
 
         opts.on("-s","--server SERVER_URL","URL of the jenkins server") do |url|
-          options[:server_url] = url 
+          options[:server_url] = url
         end
 
-    		opts.on("-j","--jobs JOBS","Comma separated jobs names") do |jobs|
+        opts.on("-j","--jobs JOBS","Comma separated jobs names") do |jobs|
           if (jobs.length > 0) then
-    			   jobs.split(',').each do |job|
-                options[:jobs] << job.strip()
-             end               
+            jobs.split(',').each do |job|
+              options[:jobs] << job.strip()
+            end
           end
-    		end 
+        end
+
+        opts.on("-i","--interval INTEVAL","Polling interval in seconds") do |interval|
+          options[:poll_interval] = interval.to_i
+        end
 
         opts.on( "-h", "--help", "Displays help message" ) do
           puts opts
           exit
         end
       end
-      
+
       optparse.parse!(args)
 
-      if(options[:server_url] == nil)
+      puts(options[:jobs].length)
+      if(options[:server_url] == nil || options[:jobs].length == 0)
         puts optparse
         exit(-1)
       end
