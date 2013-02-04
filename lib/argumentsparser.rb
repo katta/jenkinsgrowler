@@ -12,7 +12,7 @@ module JenkinsGrowler
 
         options[:server_url] = nil
         options[:jobs] = []
-        options[:poll_intervlaviews] = 60
+        options[:poll_interval] = 60
 
         opts.on("-s","--server SERVER_URL","URL of the jenkins server") do |url|
           options[:server_url] = url 
@@ -20,8 +20,9 @@ module JenkinsGrowler
 
     		opts.on("-j","--jobs JOBS","Comma separated jobs names") do |jobs|
           if (jobs.length > 0) then
-    			   options[:jobs] = jobs.split(',')
-             options[:jobs] = options[:jobs].each{ |job| job.strip() }
+    			   jobs.split(',').each do |job|
+                options[:jobs] << job.strip()
+             end               
           end
     		end 
 
