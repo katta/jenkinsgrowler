@@ -46,8 +46,7 @@ end
  
  
 def build_status(job)
-  buildOutput = last_build_output job
-  puts(buildOutput)
+  buildOutput = last_build_output job  
   building = buildOutput['building']
   buildTime = buildOutput['id']
   duration = buildOutput['duration']
