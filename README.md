@@ -1,7 +1,6 @@
-jenkinsgrowler
-==============
-
 Growl notifier for jenkins
+
+[![Build Status](https://travis-ci.org/katta/jenkinsgrowler.png?branch=master)](https://travis-ci.org/katta/jenkinsgrowler)
 
 **Usage**
 
