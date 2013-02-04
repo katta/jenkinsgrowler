@@ -29,7 +29,7 @@ module JenkinsGrowler
           end
         end
 
-        opts.on("-i","--interval INTEVAL","Polling interval in seconds") do |interval|
+        opts.on("-i","--interval INTEVAL","Polling interval in seconds. Default (60 seconds)") do |interval|
           options[:poll_interval] = interval.to_i
         end
 
