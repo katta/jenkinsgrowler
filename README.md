@@ -8,7 +8,7 @@ Growl notifier for jenkins
 
 ### Prerequisites
 
-Grown notifier command line tool has to be installed and is available on path.
+Growl notifier command line tool has to be installed and should be available on PATH.
 
 ### Installing from rubygems
 
