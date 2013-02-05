@@ -75,7 +75,11 @@ end
  
 while true do
   $jobs.each do |job|
-    build_status job
+    begin
+      build_status job 
+    rescue Exception => ex
+      puts ex.message
+    end
   end
  
   sleep $interval 
