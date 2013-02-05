@@ -61,7 +61,3 @@ If your ci server is protected with basic authentication, you could just pass on
 ```bash
 $ jenkinsgrowler -s "http://old-ci.motechproject.org/" -j "GrowlerTest" -u "username" -p "password"
 ```
-
-# Endorse 
-
-[![endorse](http://api.coderwall.com/katta/endorsecount.png)](http://coderwall.com/katta)
