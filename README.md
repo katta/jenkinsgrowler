@@ -1,4 +1,6 @@
-Growl notifier for jenkins
+Want a notification on your desktop when a jenkins job completes ? 
+
+This does that exactly, at regular intervals it checks if any of the configured jobs had run and if so it figures the status and change set and notifies via growl.
 
 ## Build Status
 
@@ -12,8 +14,8 @@ Growl notifier command line tool has to be installed and should be available on 
 
 ### Installing from rubygems
 
-```ruby
-gem install jenkinsgrowler
+```bash
+$ gem install jenkinsgrowler
 ```
 
 ### Building from source
