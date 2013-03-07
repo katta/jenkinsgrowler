@@ -48,7 +48,7 @@ Usage: jenkinsgrowler [options]
 $ jenkinsgrowler -s "http://ci.myhost.com/" -j "GrowlerTest"
 ```
 
-In the above example the `http://ci.myhost.com/` is the jenkins continuous integration server url and `GrowlerTest` is a job name ot be monitored.
+In the above example the `http://ci.myhost.com/` is the jenkins continuous integration server url and `GrowlerTest` is a job name to be monitored.
 
 You can also monitor more than one job by specifying comma spearate job names like 
 
