@@ -45,7 +45,7 @@ Usage: jenkinsgrowler [options]
 ### Provide server url and job names to be monitored
 
 ```bash
-$ jenkinsgrowler -s "http://old-ci.motechproject.org/" -j "GrowlerTest"
+$ jenkinsgrowler -s "http://ci.myhost.com/" -j "GrowlerTest"
 ```
 
 In the above example the `http://ci.myhost.com/` is the jenkins continuous integration server url and `GrowlerTest` is a job name ot be monitored.
@@ -53,7 +53,7 @@ In the above example the `http://ci.myhost.com/` is the jenkins continuous integ
 You can also monitor more than one job by specifying comma spearate job names like 
 
 ```bash
-$ jenkinsgrowler -s "http://old-ci.motechproject.org/" -j "GrowlerTest, Job3"
+$ jenkinsgrowler -s "http://ci.myhost.com/" -j "GrowlerTest, Job3"
 ```
 
 ### Basic authentication
@@ -61,5 +61,5 @@ $ jenkinsgrowler -s "http://old-ci.motechproject.org/" -j "GrowlerTest, Job3"
 If your ci server is protected with basic authentication, you could just pass on the credentials to the `jenkinsgrowler` as shown below
 
 ```bash
-$ jenkinsgrowler -s "http://old-ci.motechproject.org/" -j "GrowlerTest" -u "username" -p "password"
+$ jenkinsgrowler -s "http://ci.myhost.com/" -j "GrowlerTest" -u "username" -p "password"
 ```
