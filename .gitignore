@@ -1,2 +1,6 @@
 *.sublime*
 pkg
+
+.ruby-gemset
+
+.ruby-version

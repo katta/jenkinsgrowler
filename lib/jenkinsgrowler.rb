@@ -57,20 +57,22 @@ def build_status(job)
   buildTime = buildOutput['id']
   duration = buildOutput['duration']
  
-  if building or !changed_recently(buildTime, job) then
-    return
-  end
- 
   result = buildOutput['result']
   description = buildOutput['fullDisplayName']
   url = buildOutput['url']
- 
   comments = ''
   buildOutput['changeSet']['items'].each do |item|
     comments += item['comment']
   end
+  
+  puts "#{result}, #{description}, #{url}\n#{comments}"
  
-  %x[ growlnotify -t "#{result}" -m "#{description}\n#{comments}" ]
+  if building or !changed_recently(buildTime, job) then
+    return
+  end
+  
+  %x[ growlnotify -n 'Jenkins' -t "#{result}" -m "#{description}\n#{comments}" --image "#{Dir.pwd}/lib/images/icon_64x64.png" -s --url "#{$ciBaseUrl}/job/#{job}/lastBuild"]
+ 
 end
  
 while true do
