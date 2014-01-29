@@ -24,7 +24,7 @@ $ gem install jenkinsgrowler
 $ git clone https://github.com/katta/jenkinsgrowler.git
 $ cd jenkinsgrowler
 $ rake
-$ gem install pkg/jenkinsgrowler-0.0.4.gem
+$ gem install pkg/jenkinsgrowler-0.0.5.gem
 ```
 
 # Running
