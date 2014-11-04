@@ -19,6 +19,7 @@ $jobRuns = Hash.new
 def last_build_output(job)
   uri = URI.parse("#{$ciBaseUrl}/job/#{job}/lastBuild/api/json")
   http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = (uri.scheme == 'https')
   request = Net::HTTP::Get.new(uri.request_uri)
   if ($username !=nil && $password != nil) then
     request.basic_auth($username, $password)
