@@ -1,4 +1,4 @@
-Want a notification on your desktop when a jenkins job completes ? 
+6Want a notification on your desktop when a jenkins job completes ? 
 
 This does that exactly, at regular intervals it checks if any of the configured jobs had run and if so it figures the status and change set and notifies via growl.
 
@@ -24,7 +24,7 @@ $ gem install jenkinsgrowler
 $ git clone https://github.com/katta/jenkinsgrowler.git
 $ cd jenkinsgrowler
 $ rake
-$ gem install pkg/jenkinsgrowler-0.0.5.gem
+$ gem install pkg/jenkinsgrowler-0.0.6.gem
 ```
 
 # Running
